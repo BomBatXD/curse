@@ -10,11 +10,15 @@ def get_vars():
             - input_text is the full content of the file 'alice.txt'
 
     Exits the program with an error message if:
-        - No valid integer is provided as a command-line argument
+        - No valid positive integer is provided as a command-line argument
         - The file cannot be read
     """
     try:
         N = int(sys.argv[1])
+
+        if N < 1:
+            print("Enter a positive integer")
+            sys.exit(1)
     except Exception as e:
         print(e, "\nPlease provide a valid integer")
         sys.exit(1)
