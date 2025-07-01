@@ -35,6 +35,7 @@ def mk_words_dict(input_text):
 
     Steps:
         - Identifies unwanted (non-alphabetic) characters
+        - Converts each letter in the word to it's lowercase
         - Strips those characters from words
         - Counts occurrences of each cleaned word
         - Sorts the dictionary by frequency in descending order
@@ -49,7 +50,7 @@ def mk_words_dict(input_text):
     unwanted_chars = ''.join(set([char for char in input_text if not char.isalpha()]))
     
     # Count how many times each cleaned word appears in the text
-    words_dict = {word.strip(unwanted_chars): input_text.count(word.strip(unwanted_chars)) for word in input_text.split()}
+    words_dict = {word.lower().strip(unwanted_chars): input_text.count(word.lower().strip(unwanted_chars)) for word in input_text.split()}
     
     # Sort by frequency (value) in descending order
     sorted_dict = dict(sorted(words_dict.items(), key=lambda item: item[1], reverse=True))
